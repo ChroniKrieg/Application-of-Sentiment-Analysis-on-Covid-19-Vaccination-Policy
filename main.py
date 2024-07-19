@@ -17,8 +17,7 @@ if selected == 'Sentiment Analysis':
     st.write('This is a sentiment analysis app for Covid-19 Vaccination Policy on Twitter')
 
     # Load dataset
-    df = pd.read_csv('G:\\TA\\TA\\dataset\\Covid-19 Vaccine Tweets\\Covid-19 Vaccine Tweets with Sentiment Annotation\\cleaned_data_tweet_only.csv',
-                     encoding='unicode_escape')
+    df = pd.read_csv('cleaned_data_tweet_only.csv',encoding='unicode_escape')
 
     # Assuming 'label' column has 1 for positive and 0 for negative sentiments
     positif = df[df['label'] == 1]
@@ -50,9 +49,9 @@ if selected == 'Sentiment Analysis':
         index=0
     )
     # Load vectorizer and model
-    vector = pickle.load(open('G:\\TA\\TA\\streamlit\\tfidf_vectorizer.sav', 'rb'))
+    vector = pickle.load(open('tfidf_vectorizer.sav', 'rb'))
     if option_model == 'Logistic Regression' :
-        model = pickle.load(open('G:\\TA\\TA\\streamlit\\logregr.sav', 'rb'))
+        model = pickle.load(open('logregr.sav', 'rb'))
 
     # Transform user input using the vectorizer
     kalimat_transformed = vector.transform([kalimat])
@@ -79,8 +78,7 @@ if selected == 'Sentiment Analysis':
 if selected == 'About The Data':
     st.title('About The Data')
     # Load dataset
-    df = pd.read_csv(
-        'G:\\TA\\TA\\dataset\\Covid-19 Vaccine Tweets\\Covid-19 Vaccine Tweets with Sentiment Annotation\\cleaned_data_tweet_only.csv',
+    df = pd.read_csv('cleaned_data_tweet_only.csv',
         encoding='unicode_escape')
 
     # data review
@@ -93,5 +91,5 @@ if selected == 'About The Data':
 
     # wordcloud
     st.write('Wordcloud from the all tweets: ')
-    wordcloud_review = Image.open('G:\TA\TA\dataset\Covid-19 Vaccine Tweets\Covid-19 Vaccine Tweets with Sentiment Annotation\worldcloud.png')
+    wordcloud_review = Image.open('worldcloud.png')
     st.image(wordcloud_review)
